@@ -1,19 +1,23 @@
-import React from 'react';
+import React, { Profiler } from 'react';
 import ReactDOM from 'react-dom/client';
-import './index.css';
+import './styles/index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { ApolloProvider } from '@apollo/client';
-import client from './apolloClient';
+import client from './services/apolloClient';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <ApolloProvider client={client}>
-      <App />
-    </ApolloProvider>
-  </React.StrictMode>
+  <Profiler id="LineChart" onRender={(id, phase, actualDuration, baseDuration, startTime, commitTime, interactions) => {
+    console.log({ id, phase, actualDuration, baseDuration, startTime, commitTime, interactions });
+  }}>
+    <React.StrictMode>
+      <ApolloProvider client={client}>
+        <App />
+      </ApolloProvider>
+    </React.StrictMode>
+  </Profiler>
 );
 
 // If you want to start measuring performance in your app, pass a function

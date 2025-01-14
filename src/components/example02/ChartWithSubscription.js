@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useQuery, useSubscription } from '@apollo/client';
-import { GET_CHART_DATA, CHART_DATA_UPDATED } from './graphqlQueries';
-import LineChart from './LineChart'; // Componente de gráfico criado anteriormente
+import { GET_CHART_DATA, CHART_DATA_UPDATED } from '../../services/graphqlQueries';
+import LineChart from '../charts/chartjs/LineChart'; // Componente de gráfico criado anteriormente
 
 const ChartWithSubscription = () => {
   const [chartData, setChartData] = useState([]);

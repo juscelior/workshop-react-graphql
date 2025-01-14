@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import Chart from "react-apexcharts";
 
+let counter = 1;
 const ApexChart = ({ data }) => {
-    let counter = 1;
-    const state = {
+    const state = useMemo(() => ({
         options: {
           chart: {
             type: 'line',
@@ -41,9 +41,9 @@ const ApexChart = ({ data }) => {
             data: data.map((value, _) => value)
           }
         ]
-      };
+      }), [data]);
 
   return <Chart data={state} options={state.options} series={state.series} width={130} />;
 };
 
-export default ApexChart;
+export default React.memo(ApexChart);
