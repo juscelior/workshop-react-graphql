@@ -14,7 +14,6 @@ const LineChartVictory = ({ data }) => {
         data={chartData}
         style={{
           data: { stroke: 'steelblue' },
-          parent: { border: '1px solid #ccc' },
         }}
       />
     </VictoryChart>

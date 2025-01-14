@@ -103,7 +103,7 @@ const PaginatedListView = () => {
           <div key={item.id} style={{ display: 'table-row', borderBottom: '1px solid #ccc' }}>
             <div style={{ display: 'table-cell', padding: '8px' }}>{item.id}</div>
             <div style={{ display: 'table-cell', padding: '8px' }}>{item.label}</div>
-            <div style={{ display: 'table-cell', padding: '8px' }}>
+            <div style={{ display: 'table-cell', padding: '8px', width: '100px', height: '30px' }}>
                 {renderComponent(item, index)}
             </div>            
             <div style={{ display: 'table-cell', padding: '8px' }}>{item.points.join(', ')}</div>
