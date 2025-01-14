@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -22,7 +22,7 @@ ChartJS.register(
 );
 
 const LineChart = ({ data }) => {
-  const chartData = {
+  const chartData = useMemo(() => ({
     labels: data.map((_, index) => index),
     datasets: [
       {
@@ -31,24 +31,25 @@ const LineChart = ({ data }) => {
         fill: false,
         borderColor: 'steelblue',
         borderWidth: 2,
-        tension: 0.4, // Suaviza a curva
+        tension: 0.4,
         pointBackgroundColor: 'steelblue',
         pointRadius: 3,
       },
     ],
-  };
+  }), [data]);
 
-  const options = {
+  const options = useMemo(() => ({
     responsive: false,
     maintainAspectRatio: false,
+    animation: true,
     plugins: {
-        legend: {
-          display: false,
-        },
-        tooltip: {
-            enabled: false,
-        }
+      legend: {
+        display: false,
       },
+      tooltip: {
+        enabled: false,
+      },
+    },
     scales: {
       x: {
         display: false,
@@ -57,9 +58,11 @@ const LineChart = ({ data }) => {
         display: false,
       },
     },
-  };
+  }), []);
 
   return <Line data={chartData} options={options} width={100} height={30} />;
 };
 
-export default LineChart;
+export default React.memo(LineChart);
+
+//export default LineChart;

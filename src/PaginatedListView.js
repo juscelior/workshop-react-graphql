@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { useQuery, useSubscription } from '@apollo/client';
 import {GET_CHART_DATA_PAGED, CHART_DATA_UPDATED} from './graphqlQueries';
 import LineChart from './LineChart'; // Componente de gráfico criado anteriormente
+import { FixedSizeList as List } from 'react-window';
+import LazyLineChart from './LazyLineChart';
 
 
 const PaginatedListView = () => {
@@ -55,12 +57,12 @@ const PaginatedListView = () => {
           <div style={{ display: 'table-cell', padding: '8px' }}>Label</div>
           <div style={{ display: 'table-cell', padding: '8px' }}>Points</div>
         </div>
-        {items.map(item => (
+        {items.map((item, index) => (
           <div key={item.id} style={{ display: 'table-row', borderBottom: '1px solid #ccc' }}>
             <div style={{ display: 'table-cell', padding: '8px' }}>{item.id}</div>
             <div style={{ display: 'table-cell', padding: '8px' }}>{item.label}</div>
             <div style={{ display: 'table-cell', padding: '8px' }}>
-                <LineChart data={item.points} />
+                <LazyLineChart key={index} data={item.points} />
             </div>            
             <div style={{ display: 'table-cell', padding: '8px' }}>{item.points.join(', ')}</div>
           </div>
