@@ -1,12 +1,21 @@
-# Getting Started with Create React App 1
+# Chart Comparisson App with React
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a React application that demonstrates the use of various charting libraries and GraphQL for data fetching and real-time updates. The project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+
+## Table of Contents
+
+- [Available Scripts](#available-scripts)
+- [Project Structure](#project-structure)
+- [Libraries and Technologies](#libraries-and-technologies)
+- [Running the Project](#running-the-project)
+- [Results Obtained](#results-obtained)
 
 ## Available Scripts
 
 In the project directory, you can run:
 
-### `npm start`
+### npm start
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
@@ -14,57 +23,118 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm test`
+### npm run build
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
+Builds the app for production to the build folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
 The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+### npm run eject
 
-### `npm run eject`
+Note: this is a one-way operation. Once you eject, you can't go back!
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+If you aren't satisfied with the build tool and configuration choices, you can eject at any time. This command will remove the single build dependency from your project.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc.) right into your project so you have full control over them. All of the commands except eject will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+#### Project Structure
 
-## Learn More
+.gitignore
+package.json
+public/
+  index.html
+  manifest.json
+  robots.txt
+README.md
+src/
+  App.js
+  App.test.js
+  components/
+    charts/
+      chartjs/
+        LazyLineChart.js
+        LineChart.js
+      victory/
+        LazyLineVictory.js
+        LineChartVictory.js
+    example01/
+      JustChart.js
+    example02/
+      ChartWithSubscription.js
+  index.js
+  PaginatedListView.js
+  reportWebVitals.js
+  services/
+    apolloClient.js
+    graphqlQueries.js
+  setupTests.js
+  styles/
+    App.css
+    index.css
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### Directory and File Descriptions
 
-### Code Splitting
+- **public/**: Contains static files such as index.html, manifest.json, and robots.txt.
+- **src/**: Contains the source code of the application.
+  - **App.js**: The main component of the application.
+  - **App.test.js**: Contains tests for the App component.
+  - **components/**: Contains reusable components.
+    - **charts/**: Contains chart components using different libraries.
+      - **chartjs/**: Contains components using Chart.js.
+        - LazyLineChart.js: A lazily loaded line chart component using Chart.js.
+        - LineChart.js: A line chart component using Chart.js.
+      - **victory/**: Contains components using Victory.
+        - LazyLineVictory.js: A lazily loaded line chart component using Victory.
+        - LineChartVictory.js: A line chart component using Victory.
+    - **example01/**: Contains example components.
+      - JustChart.js: An example component demonstrating the use of Victory charts.
+    - **example02/**: Contains example components.
+      - ChartWithSubscription.js: An example component demonstrating the use of GraphQL subscriptions with Chart.js.
+  - **index.js**: The entry point of the application.
+  - **PaginatedListView.js**: A component that displays a paginated list view with charts.
+  - **reportWebVitals.js**: A utility for measuring performance.
+  - **services/**: Contains service files for GraphQL.
+    - apolloClient.js: Configures the Apollo Client for GraphQL queries and subscriptions.
+    - graphqlQueries.js: Contains GraphQL queries and subscriptions.
+  - **setupTests.js**: Configures the testing environment.
+  - **styles/**: Contains CSS files for styling the application.
+    - App.css: Styles for the App component.
+    - index.css: Global styles for the application.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+#### Libraries and Technologies
 
-### Analyzing the Bundle Size
+- [React](https://reactjs.org/): 
+- [Create React App](https://github.com/facebook/create-react-app): 
+- [Apollo Client](https://www.apollographql.com/docs/react/): 
+- [Chart.js](https://www.chartjs.org/): 
+- [react-chartjs-2](https://github.com/reactchartjs/react-chartjs-2): 
+- [Victory](https://formidable.com/open-source/victory/): 
+- [graphql-ws](https://github.com/enisdenjo/graphql-ws): 
+- [react-intersection-observer](https://github.com/thebuilder/react-intersection-observer): 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+##### Running the Project
 
-### Making a Progressive Web App
+1) Repository cloning:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+ git clone <repository-url>
 
-### Advanced Configuration
+2) Install dependencies:
+ 
+ npm install 
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+3) Start the development server:
+ 
+ npm start
 
-### Deployment
+4) Open http://localhost:3000 to view it in your browser.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+5) To build the project for production:
+ 
+ npm run build
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+###### Results Obtained
