@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import { useQuery, useSubscription } from '@apollo/client';
-import {GET_CHART_DATA_PAGED, CHART_DATA_UPDATED} from './services/graphqlQueries';
+import { GET_CHART_DATA_PAGED, CHART_DATA_UPDATED } from './services/graphqlQueries';
 import LazyLineChart from './components/charts/chartjs/LazyLineChart';
 import LazyLineVictory from './components/charts/victory/LazyLineVictory';
-
+import LazyLineApexChart from './components/charts/apexchart/LazyLineApexChart';
 
 const PaginatedListView = () => {
   const [page, setPage] = useState(1);
@@ -23,7 +23,7 @@ const PaginatedListView = () => {
 
   useEffect(() => {
     if (subscriptionData) {
-        console.log(subscriptionData)
+      console.log(subscriptionData)
       const updatedItem = subscriptionData.updatedData;
       setItems((prevItems) =>
         prevItems.map((item) =>
@@ -58,6 +58,8 @@ const PaginatedListView = () => {
         return <LazyLineChart key={index} data={item.points} />;
       case 'victory':
         return <LazyLineVictory key={index} data={item.points} />;
+      case 'apexChart':
+        return <LazyLineApexChart key={index} data={item.points} />;
       default:
         return null;
     }
@@ -86,6 +88,15 @@ const PaginatedListView = () => {
           />
           Victory
         </label>
+        <label>
+          <input
+            type="radio"
+            value="apexChart"
+            checked={selectedChart === 'apexChart'}
+            onChange={handleRadioChange}
+          />
+          ApexChart
+        </label>
       </div>
 
 
@@ -103,7 +114,7 @@ const PaginatedListView = () => {
           <div key={item.id} style={{ display: 'table-row', borderBottom: '1px solid #ccc' }}>
             <div style={{ display: 'table-cell', padding: '8px' }}>{item.id}</div>
             <div style={{ display: 'table-cell', padding: '8px' }}>{item.label}</div>
-            <div style={{ display: 'table-cell', padding: '8px' }}>
+            <div style={{ display: 'table-cell', padding: '8px', width: '100px', height: '30px' }}>
                 {renderComponent(item, index)}
             </div>            
             <div style={{ display: 'table-cell', padding: '8px' }}>{item.points.join(', ')}</div>
